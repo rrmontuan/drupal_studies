@@ -7,10 +7,12 @@ use Drupal\Core\KeyValueStore\KeyValueFactoryInterface;
 class RoarGenerator 
 {
     private $keyValueFactory;
+    private $useCache;
 
-    public function __construct(KeyValueFactoryInterface $keyValueFactory)
+    public function __construct(KeyValueFactoryInterface $keyValueFactory, $useCache)
     {
         $this->keyValueFactory = $keyValueFactory;
+        $this->useCache = $useCache;
     }
 
     public function getRoar($length)
@@ -19,7 +21,7 @@ class RoarGenerator
 
         $store = $this->keyValueFactory->get('dino');
 
-        if($store->has($key)){
+        if($this->useCache && $store->has($key)){
             return $store->get($key);
         }
 
@@ -27,7 +29,10 @@ class RoarGenerator
         sleep(2);
 
         $string = 'R' . str_repeat('O', $length) . 'AR!';
-        $store->set($key, $string);
+
+        if($this->useCache){
+            $store->set($key, $string);
+        }
 
         return $string;
     }
