@@ -3,6 +3,11 @@
 mkdir -p /var/www/html/sites/default/files
 chmod -R 777 /var/www/html/sites/default/files
 
+if [ ! -e /vendor ]
+then
+    composer install
+fi
+
 echo ""
 echo "--------------------------------------"
 echo "----- Seu container está pronto! -----"

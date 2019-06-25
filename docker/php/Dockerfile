@@ -26,9 +26,9 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"   
 
 RUN mv composer.phar /usr/local/bin/composer
 
-RUN php -r "readfile('https://drupalconsole.com/installer');" > drupal.phar     \
-    && mv drupal.phar /usr/local/bin/drupal                                     \           
-    && chmod +x /usr/local/bin/drupal
+RUN wget -O drush.phar https://github.com/drush-ops/drush-launcher/releases/download/0.6.0/drush.phar   \
+    && chmod +x drush.phar                                                                              \
+    && mv drush.phar /usr/local/bin/drush
 
 USER www-data
 
