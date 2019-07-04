@@ -2,3 +2,4 @@ name: 'Ice-Cream Theme'
 type: theme
 description: 'A great theme for summer days'
 core: 8.x
+base theme: classy
