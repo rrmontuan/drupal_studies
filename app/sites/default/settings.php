@@ -763,6 +763,19 @@ $settings['entity_update_batch_size'] = 50;
  */
 $settings['entity_update_backup'] = TRUE;
 
+$databases['default']['default'] = array (
+  'database' => 'drupal',
+  'username' => 'drupal',
+  'password' => 'password',
+  'prefix' => '',
+  'host' => 'database',
+  'port' => '3306',
+  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+  'driver' => 'mysql',
+);
+
+$config_directories['sync'] = 'sites/default/files/config_hWJAZxoY8SqUww8iFlV1EJ0PgCQnUJamQdH5FE8q7NLwH4x1mb1eounlXA0yS8GcKb-S5NOn0A/sync';
+
 /**
  * Load local development override configuration, if available.
  *
@@ -777,14 +790,3 @@ $settings['entity_update_backup'] = TRUE;
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
   include $app_root . '/' . $site_path . '/settings.local.php';
 }
-$databases['default']['default'] = array (
-  'database' => 'drupal',
-  'username' => 'drupal',
-  'password' => 'password',
-  'prefix' => '',
-  'host' => 'database',
-  'port' => '3306',
-  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
-  'driver' => 'mysql',
-);
-$config_directories['sync'] = 'sites/default/files/config_hWJAZxoY8SqUww8iFlV1EJ0PgCQnUJamQdH5FE8q7NLwH4x1mb1eounlXA0yS8GcKb-S5NOn0A/sync';
